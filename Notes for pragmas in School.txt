@@ -1,0 +1,62 @@
+' ----- FIRST RUN
+
+
+' ----- SECOND RUN
+
+' pragmas to reach zero-compilation error stage
+'## project:PostProcess "(?<=\n[ \t]*[^']).*DataReport[1-6]", "' UNSUPPORTED: $0"
+'## project:DefaultMemberSupport
+
+' pragmas to reduce the number of warnings
+'## project:DisableMessage 80F4
+'## project:PostProcess "\bScreen6.MousePointer\b", "Screen6.ActiveForm.MousePointer"
+
+' pragmas to avoid errors at startup (database not found)
+'## AddDataFile MASTERFILE.MDB
+'## AddDataFile SETTINGS\*.*
+
+
+' ------ THIRD RUN  (add to Module2)
+
+' pragma to avoid runtime error (the 2nd time a form is displayed)
+'## AutoNew True     
+
+
+
+
+
+
+
+
+
+
+
+' -------- ENABLE PLATFORM
+
+'## project:SetTag AppFramework, True
+
+Add an ErrorProvider to the form
+Bind textbox to that error provider
+set datatype 
+
+
+------------------------------
+
+Private Sub cmdSave_Click() Handles cmdSave.Click
+	Dim btnSend As New Button()
+	btnSend.Location = New Point(300, 170)
+	btnSend.Size =  New Size(80, 33)
+	btnSend.Text = "Send"
+	Form1.Controls.Add(btnSend)
+	AddHandler btnSend.Click, AddressOf btnSend_Click
+
+End Sub
+
+Private Sub btnSend_Click(ByVal sender As Object, ByVal e As EventArgs) 
+	MsgBox("Email has been sent")
+End Sub
+
+
+
+
+
